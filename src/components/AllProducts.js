@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../actions/action";
 import { Link } from "react-router-dom";
 
-export const AllProductPage = () => {
+const AllProductPage = () => {
   const products = useSelector((state) => state.allProducts.products);
 
   const dispatch = useDispatch();
@@ -46,3 +46,5 @@ export const AllProductPage = () => {
   });
   return <div className="ui grid container">{renderProducts}</div>;
 };
+
+export default AllProductPage;
