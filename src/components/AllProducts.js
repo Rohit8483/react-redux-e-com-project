@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../actions/action";
-import { Link } from "react-router-dom";
+import MyCard from "./Card";
 
 const AllProductPage = () => {
   const products = useSelector((state) => state.allProducts.products);
@@ -24,25 +24,8 @@ const AllProductPage = () => {
   console.log("products: ", products);
 
   const renderProducts = products.map((product) => {
-    const { image, title, price, category, id } = product;
-    return (
-      <div className="four wide column" key={id}>
-        <Link to={`/product/${id}`}>
-          <div className="ui link cards">
-            <div className="card">
-              <div className="image">
-                <img src={image} alt={title} />
-              </div>
-              <div className="content">
-                <div className="header">{title}</div>
-                <div className="meta price">$ {price}</div>
-                <div className="meta">{category}</div>
-              </div>
-            </div>
-          </div>
-        </Link>
-      </div>
-    );
+    const { id } = product;
+    return <MyCard key={id} product={product} />;
   });
   return <div className="ui grid container">{renderProducts}</div>;
 };
